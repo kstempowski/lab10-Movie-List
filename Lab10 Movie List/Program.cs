@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Lab10_Movie_List
@@ -8,13 +9,15 @@ namespace Lab10_Movie_List
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the Movie List Application!");
+            Console.WriteLine("There are 10 movies in this list.\n");
 
             bool repeat = true;
 
             while (repeat)
             {
+                //Creates a new list of objects Movie.
                 List<Movie> movies = new List<Movie>();
-
 
                 Movie m1 = new Movie("Star Wars", "scifi");
                 Movie m2 = new Movie("Star Trek", "scifi");
@@ -37,28 +40,37 @@ namespace Lab10_Movie_List
                 movies.Add(m9);
                 movies.Add(m10);
 
-                Console.WriteLine("Welcome to the Movie List Application!\n");
-                Console.WriteLine("There are 10 movies in this list.\n");
+                
 
                 Console.WriteLine("What type of movie are you interested in?");
                 string genre = Console.ReadLine().ToLower();
-
 
                 foreach (Movie film in movies)
                 {
                     if (genre == film.Category)
                     {
+                        //The selected category will return the movie titles.
                         film.Choice();
 
                     }
                 }
+                if (genre == "")
+                {
+                    Console.WriteLine("Please try again");
+                    
+                }
 
-                //Loop back if the user selects y, all other selections will terminate the program.
+                //Loop back if the user selects y, or leaves the field blank.
+                //All other selections will terminate the program.
                 Console.WriteLine("Would you like to input another set of numbers? y/n");
 
                 string answer = Console.ReadLine().ToLower();
 
                 if (answer == "y")
+                {
+                    repeat = true;
+                }
+                else if (answer == "")
                 {
                     repeat = true;
                 }

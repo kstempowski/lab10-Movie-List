@@ -50,7 +50,6 @@ namespace Lab10_Movie_List
 
         public void Choice()
         {
-            
             Console.WriteLine(title);
            
         }
